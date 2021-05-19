@@ -1,28 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <Header :isMobile="isMobile" />
+    <v-main>
+      <Content :isMobile="isMobile"/>
+      <Footer />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Content from './components/Content';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: { Content, Footer, Header },
+  data: () => ({
+    //
+  }),
+  computed: {
+    isMobile () {
+      return this.$vuetify.breakpoint.xsOnly
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app{
+    background: linear-gradient(180deg, #148EFF 0%, #001439 48.44%, #000000 77.08%);
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: Quicksand, sans-serif;
+  }
 </style>
